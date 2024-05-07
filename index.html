@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueJS Example</title>
+    <!-- Load Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <h1 v-bind:class="{ 'highlight': isHighlighted }">Contoh VueJS</h1>
+    <input type="text" v-model="inputText">
+    <p v-bind:style="{ color: textColor }">Teks yang dimasukkan: {{ inputText }}</p>
+    <button @click="toggleHighlight">Toggle Highlight</button>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            isHighlighted: false,
+            inputText: '',
+            textColor: 'black'
+        },
+        methods: {
+            toggleHighlight() {
+                this.isHighlighted = !this.isHighlighted;
+                if (this.isHighlighted) {
+                    this.textColor = 'red';
+                } else {
+                    this.textColor = 'black';
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
